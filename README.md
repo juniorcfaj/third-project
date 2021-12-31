@@ -4,7 +4,7 @@ This is the last project from Udacity. In this project, you'll develop using a v
 
 ## Project Overview
 
-![overview](./srv/overview.png)
+![image](https://github.com/juniorcfaj/third-project/blob/main/src/overview.png)
 
 ## Getting Started
 

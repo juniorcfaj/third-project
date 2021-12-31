@@ -89,7 +89,7 @@ Use you Resouce Group that you've created. In my case is "tfstate"
 
 ### Add into Pipelines --> Library --> Secure files these 2 files: the private secure file : id_rsa key the terraform tfvars file : terraform.tfvars
 
-![image](https://github.com/juniorcfaj/third-project/blob/main/src/pipelines.png)
+![image](https://github.com/juniorcfaj/third-project/blob/main/src/pipelines.PNG)
 
 ### Go to Azure Cloud Shell
 

@@ -76,7 +76,6 @@ Then you'll need to add these informations into vm.tf
 ==> azure-arm:  -> Image ID                  : '/subscriptions/<subscription-id>/resourceGroups/RG-myPackerImage/providers/Microsoft.Compute/images/myPackerImage'
 ==> azure-arm:  -> Image Location            : 'eastus2'
 ```
-<<<<<<< HEAD
 
 # Creating a project in Azure Devops
 
@@ -98,5 +97,4 @@ Go to Azure Cloud Shell and execute these commands:
 
 ```
 terraform validate
-=======
->>>>>>> f53b9ab14505466fc0685af7ac35773ac58ea34a
+```

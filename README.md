@@ -91,7 +91,7 @@ Create a environment named "VM-TEST" as used in pipeline.yaml
 
 ### Add into Pipelines --> Library --> Secure files these 2 files: the private secure file : id_rsa key the terraform tfvars file : terraform.tfvars
 
-![image](https://github.com/juniorcfaj/third-project/blob/main/src/pipelines.png)
+![image](https://github.com/juniorcfaj/third-project/blob/main/src/pipelines.PNG)
 
 ### Go to Azure Cloud Shell
 

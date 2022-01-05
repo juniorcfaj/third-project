@@ -87,6 +87,8 @@ Create a project
 Project Settings > Pipelines > Service Connection
 Use you Resouce Group that you've created. In my case is "tfstate"
 
+Create a environment named "VM-TEST" as used in pipeline.yaml
+
 ### Add into Pipelines --> Library --> Secure files these 2 files: the private secure file : id_rsa key the terraform tfvars file : terraform.tfvars
 
 ![image](https://github.com/juniorcfaj/third-project/blob/main/src/pipelines.png)

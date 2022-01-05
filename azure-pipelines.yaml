@@ -1,19 +1,19 @@
 name: Azure Pipelines
 variables:
-  python.version: '3.9'
+  python.version: '3.7.6'
 stages:
 - stage: Build
   jobs:
   - job: Build
     pool:
-      name: Hosted Ubuntu 1804
+      name: Hosted Ubuntu 1604
     steps:
     # Needed for Terraform VM deployment
-     - task: InstallSSHKey@0
-       inputs:
-         knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCzpmxyPCChde3B5cdb/BNpupsAif0tS3/ZaYJ3dX01Kd5U1ej953+zGJ2WLqDSUZrWclbw133f+32j8y9tj4FR+2pPg0OpB1PA6JiqRP4fwPkm+PwjUJ0gZcJP7bjq44xZsVf37jn4DjyTv5qruKxyR7OtrYCvtRpOKPenCd3KAOV6lmFoLOucpk30f/CheWpNsHDnTDKXrP1d0BYKdzcUrV25p+HgHEEvas5gSc8MeadGw54d1UymnNk21W5m07VuihW2b2Bbs7b0a6TJ+qytHlHVBM1DJ0rNYt2Yhjgv/Gic3Cs8/T4qbduvUrOb7ij0E+BFU1zNpYOIyKLk2yJ junior@cc-27225d66-7749588dd6-nwg6r'
-         sshPublicKey: 'AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ=='
-         sshKeySecureFile: 'id_rsa'
+    # - task: InstallSSHKey@0
+    #   inputs:
+    #     knownHostsEntry: 'KNOWN_HOSTS_STRING'
+    #     sshPublicKey: 'PUBLIC_KEY'
+    #     sshKeySecureFile: 'id_rsa'
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
@@ -28,7 +28,7 @@ stages:
   jobs:
   - deployment: FakeRestAPI
     pool:
-      vmImage: 'Ubuntu-18.04'
+      vmImage: 'Ubuntu-16.04'
     environment: 'TEST'
     strategy:
       runOnce:
@@ -63,5 +63,3 @@ stages:
   #               sudo apt-get install -y chromium-browser
   #               pip3 install selenium
   #               export PATH=$PATH:some/path
-
-

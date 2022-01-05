@@ -64,9 +64,11 @@ This command will output 5 values:
 ```
 These values map to the Terraform variables like so:
 
-appId is the client_id defined above.
-password is the client_secret defined above.
-tenant is the tenant_id defined above.
+`appId` is the `client_id` defined above.
+
+`password` is the `client_secret` defined above.
+
+`tenant` is the `tenant_id` defined above.
 
 ## Installing extensions into Azure Devops
 

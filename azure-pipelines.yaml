@@ -11,7 +11,8 @@ trigger:
 stages:
 - stage: Provision
   jobs:
-  - job: Build
+  - job: provision_azure_infrastructure
+    displayName: Provision Azure Infrastructure
     pool:
       vmImage: 'ubuntu-18.04'
     steps:
@@ -19,18 +20,19 @@ stages:
       name: tfvardef
       displayName: Download terraform.tfvars
       inputs:
-        secureFile: 'terraform.tfvars'
+        secureFile: 'terraform.tfvars' 
 
     # Needed for Terraform VM deployment
     - task: InstallSSHKey@0
       inputs:
-        knownHostsEntry: 'KNOWN_HOSTS_STRING'
-        sshPublicKey: '$(PUBLIC_KEY)'
+        knownHostsEntry: 'known_hosts'
+        sshPublicKey: $(PUBLIC_KEY)
         sshKeySecureFile: 'id_rsa'
 
     - bash: |
         cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform/environments/test
       displayName: Copy terraform.tfvars
+
     - bash: |
         echo Pipeline workspace dir is $(Pipeline.Workspace)
         echo Terraform variable definition file is $(tfvardef.secureFilePath)
@@ -47,7 +49,7 @@ stages:
         pwd
         ls -la
       displayName: Verify build environment (pre)
-    
+
     # install Terraform Azure Pipelines Extension by Microsoft DevLabs
     # https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks
     - task: TerraformInstaller@0
@@ -116,30 +118,29 @@ stages:
 
 - stage: Deployment
   jobs:
-  - deployment: FakeRestAPI
+  - deployment: deployment_fakerestapi
     displayName: Deploy FakeRestAPI
     pool:
-      vmImage: 'Ubuntu-18.04'
+      vmImage: 'ubuntu-18.04'
     environment: 'TEST'
     strategy:
       runOnce:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App'
+            displayName: Deploy Azure WebApp
             inputs:
               azureSubscription: 'azurerm-sc'
-              appName: 'third-project-udacity'
+              appName: 'lingchenzhu-webapi-AppService'
               appType: webApp
-              package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
+              package: $(Pipeline.Workspace)/drop-fakerestapi/fakerestapi-$(Build.BuildId).zip
               deploymentMethod: zipDeploy
 
-  - deployment: VMDeploy
+  - deployment: deployment_vm
     displayName: Deploy Virtual Machine
     environment:
-      name:  'TEST'
+      name: 'TEST'
       resourceType: VirtualMachine
-      tags: Test environment
     strategy:
       runOnce:
         deploy:
@@ -220,18 +221,18 @@ stages:
         mkdir -p log/jmeter
         pwd
         ls -la
-        displayName: Install JMeter
+      displayName: Install JMeter
     - bash: |
         apache-jmeter-5.4/bin/jmeter -n -t automatedtesting/jmeter/stress-test.jmx \
-                                      -l log/jmeter/stress-test-result.csv \
-                                      -e -f -o log/jmeter/stress-test-html-report \
-                                      -j log/jmeter/jmeter-stress-test.log
-        displayName: JMeter stress test
+                                     -l log/jmeter/stress-test-result.csv \
+                                     -e -f -o log/jmeter/stress-test-html-report \
+                                     -j log/jmeter/jmeter-stress-test.log
+      displayName: JMeter stress test
     - bash: |
         apache-jmeter-5.4/bin/jmeter -n -t automatedtesting/jmeter/endurance-test.jmx \
-                                      -l log/jmeter/endurance-test-result.csv \
-                                      -e -f -o log/jmeter/endurance-test-html-report \
-                                      -j log/jmeter/jmeter-endurance-test.log
+                                     -l log/jmeter/endurance-test-result.csv \
+                                     -e -f -o log/jmeter/endurance-test-html-report \
+                                     -j log/jmeter/jmeter-endurance-test.log
       displayName: JMeter endurance test
     - task: ArchiveFiles@2
       displayName: Archive JMeter stress test HTML report
@@ -281,16 +282,16 @@ stages:
       displayName: Install Newman
     - bash: |
         newman run automatedtesting/postman/regression-test.json \
-                    --reporters cli,junit \
-                    --reporter-junit-export log/newman/regression-test.xml \
-                    --suppress-exit-code
+                   --reporters cli,junit \
+                   --reporter-junit-export log/newman/regression-test.xml \
+                   --suppress-exit-code
       displayName: Newman regression test
     - bash: |
         newman run automatedtesting/postman/validation-test.json \
-                    -e automatedtesting/postman/validation-test-env.postman-environment.json \
-                    --reporters cli,junit \
-                    --reporter-junit-export log/newman/validation-test.xml \
-                    --suppress-exit-code
+                   -e automatedtesting/postman/validation-test-env.postman-environment.json \
+                   --reporters cli,junit \
+                   --reporter-junit-export log/newman/validation-test.xml \
+                   --suppress-exit-code
         ls -la $(System.DefaultWorkingDirectory)/log/newman/
       displayName: Newman validation test
     - task: PublishPipelineArtifact@1
@@ -330,6 +331,7 @@ stages:
     - bash: |
         cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform/environments/test
       displayName: Copy terraform.tfvars
+
     # install Terraform Azure Pipelines Extension by Microsoft DevLabs
     # https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks
     - task: TerraformInstaller@0
@@ -344,7 +346,7 @@ stages:
         command: 'init'
         backendServiceArm: 'azurerm-sc'
         backendAzureRmResourceGroupName: 'tstate'
-        backendAzureRmStorageAccountName: 'tstate12785'
+        backendAzureRmStorageAccountName: 'tstate18893'
         backendAzureRmContainerName: 'tstate'
         backendAzureRmKey: 'terraform.tfstate'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'

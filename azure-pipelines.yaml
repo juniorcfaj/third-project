@@ -39,8 +39,8 @@ stages:
         cd $(Agent.TempDirectory)
         pwd
         ls -la
-        cat id_rsa.pub
         cd ~/.ssh/
+        cat id_rsa.pub
         pwd
         ls -la
         cat known_hosts

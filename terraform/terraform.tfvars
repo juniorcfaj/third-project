@@ -5,8 +5,8 @@ client_secret = "uRiN.qHAJx9hWWRzsA9CTgR49.gNgqrOvf"
 tenant_id = "786001bc-23be-406d-ae83-ba6345fba6b0"
 
 # Resource Group/Location
-location = "East US"
-resource_group = "Project-qa"
+location = "eastus2"
+resource_group = "RG-Project-qa"
 application_type = "myApplication4" # This name has to be globally unique.
 
 # Network

@@ -35,7 +35,7 @@ stages:
         sshKeySecureFile: 'id_rsa'
 
     - bash: |
-        cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform/environments/test
+        cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform
       displayName: Copy terraform.tfvars
 
     - bash: |
@@ -65,7 +65,7 @@ stages:
         backendAzureRmStorageAccountName: 'tstate18893'
         backendAzureRmContainerName: 'tstate'
         backendAzureRmKey: 'terraform.tfstate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
 
     - task: TerraformTaskV1@0
       displayName: Terraform Apply
@@ -74,7 +74,7 @@ stages:
         command: 'apply'
         commandOptions: |
           -auto-approve 
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         environmentServiceNameAzureRM: 'azurerm-sc'
 
 - stage: Build
@@ -92,7 +92,7 @@ stages:
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip'
         verbose: true
-        
+
     - task: PublishPipelineArtifact@1
       displayName: Publish FakeRestAPI artifact
       inputs:
@@ -327,7 +327,7 @@ stages:
         sshKeySecureFile: 'id_rsa'
 
     - bash: |
-        cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform/environments/test
+        cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform
       displayName: Copy terraform.tfvars
 
     - task: TerraformTaskV1@0
@@ -340,7 +340,7 @@ stages:
         backendAzureRmStorageAccountName: 'tstate18893'
         backendAzureRmContainerName: 'tstate'
         backendAzureRmKey: 'terraform.tfstate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
 
     - task: TerraformTaskV1@0
       displayName: Terraform Destroy
@@ -349,5 +349,5 @@ stages:
         command: 'destroy'
         commandOptions: |
           -auto-approve 
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         environmentServiceNameAzureRM: 'azurerm-sc'

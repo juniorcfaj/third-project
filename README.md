@@ -1,6 +1,6 @@
 # Ensuring Quality Releases
 
-This is the last project from Udacity. In this project, you'll develop using a variety of industry leading tools, especially Microsoft Azure, to create disposable test environments and run a variety of automated tests with the click of a button. Additionally, you'll monitor and provide insight into your application's behavior, and determine root causes by querying the application’s custom log files
+This is the last project from Udacity. In this project, you'll develop using a variety of industry leading tools, especially Microsoft Azure, to create disposable test environments and run a variety of automated tests with the click of a button. Additionally, you'll monitor and provide insight into your application's behavior, and determine root causes by querying the application’s custom log files.
 
 ## Project Overview
 

@@ -40,7 +40,7 @@ stages:
         targetType: 'inline'
         script: cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform
 
-    - task: TerraformInstalaIssoLogo@0.14.8
+    - task: TerraformTaskV3@0.14.8
       displayName: Install Terraform
       inputs:
         terraformVersion: '0.14.8'

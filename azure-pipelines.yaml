@@ -35,10 +35,10 @@ stages:
         sshKeySecureFile: 'id_rsa'
 
     - task: Bash@3
-        displayName: Copy terraform.tfvars
-        inputs:
-          targetType: 'inline'
-          script: cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform
+      displayName: Copy terraform.tfvars
+      inputs:
+        targetType: 'inline'
+        script: cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform
 
     - task: TerraformTaskV1@0
       displayName: Terraform Init

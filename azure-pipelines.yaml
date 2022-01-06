@@ -38,7 +38,7 @@ stages:
         cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform
       displayName: Copy terraform.tfvars
 
-    - task: TerraformT@0
+    - task: TerraformTaskey@0
       displayName: Install Terraform
       inputs:
         terraformVersion: '0.13.5'

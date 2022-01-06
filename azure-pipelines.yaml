@@ -40,13 +40,6 @@ stages:
         targetType: 'inline'
         script: cp $(Agent.TempDirectory)/terraform.tfvars $(System.DefaultWorkingDirectory)/terraform
 
-    # install Terraform Azure Pipelines Extension by Microsoft DevLabs
-    # https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks
-    - task: TerraformInstallerV1@0
-      displayName: Install Terraform
-      inputs:
-        terraformVersion: '0.13.5'
-
     - task: TerraformTaskV1@0
       displayName: Terraform Init
       inputs:

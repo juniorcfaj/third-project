@@ -53,14 +53,14 @@ stages:
         backendAzureRmStorageAccountName: 'tstate18893'
         backendAzureRmContainerName: 'tstate'
         backendAzureRmKey: 'terraform.tfstate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/module'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/modules'
     
     - task: TerraformTaskV1@0
       displayName: Terraform Validate
       inputs:
         provider: 'azurerm'
         command: 'validate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/module'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/modules'
         environmentServiceNameAzureRM: 'azurerm-sc'
       
     - task: TerraformTaskV1@0

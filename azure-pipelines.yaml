@@ -60,7 +60,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'validate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/module'
         environmentServiceNameAzureRM: 'azurerm-sc'
       
     - task: TerraformTaskV1@0
@@ -68,7 +68,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/module'
         environmentServiceNameAzureRM: 'azurerm-sc'
 
     - task: TerraformTaskV1@0
@@ -78,7 +78,7 @@ stages:
         command: 'apply'
         commandOptions: |
           -auto-approve 
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/module'
         environmentServiceNameAzureRM: 'azurerm-sc'
 
 - stage: Build

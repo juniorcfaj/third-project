@@ -68,7 +68,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/module'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         environmentServiceNameAzureRM: 'azurerm-sc'
 
     - task: TerraformTaskV1@0

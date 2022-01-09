@@ -1,4 +1,4 @@
 variable "resource-group" {
-    location = "East US 2"
+    location = "eastus2"
     resource_group = "tstate"
 }

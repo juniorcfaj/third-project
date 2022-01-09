@@ -7,7 +7,7 @@ tenant_id = "786001bc-23be-406d-ae83-ba6345fba6b0"
 # Resource Group/Location
 location = "eastus2"
 resource_group = "tstate"
-application_type = "myApplication" # This name has to be globally unique.
+application_type = "udacity" # This name has to be globally unique.
 
 # Network
 virtual_network_name = "udacity-network"

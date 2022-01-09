@@ -39,9 +39,9 @@ stages:
       displayName: Copy terraform.tfvars
 
     - task: TerraformInstaller@0
-        displayName: Install Terraform
-        inputs:
-          terraformVersion: '0.14.8'
+      displayName: Install Terraform
+      inputs:
+        terraformVersion: '0.14.8'
 
     - task: TerraformTaskV1@0
       displayName: Terraform Init

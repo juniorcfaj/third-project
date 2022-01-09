@@ -5,6 +5,7 @@ provider "azurerm" {
   tenant_id = "786001bc-23be-406d-ae83-ba6345fba6b0"
   features {}
 }
+terraform {
   backend "azurerm" {
     storage_account_name = "tstate18893"
     container_name       = "tfstate"
@@ -12,6 +13,7 @@ provider "azurerm" {
     access_key           = "UGUYGaB3TQ5HdoqtfirEA9NK6flOaki5g0OOdCp+1DFlNxc5h0QDchvJooCTfXcVGgegNbEMhdvouKfX2QidAw=="
     resource_group_name = "${var.resource_group}"
   }
+}
 module "resource_group" {
   source               = "../../modules/resource_group"
   resource_group       = "${var.resource_group}"

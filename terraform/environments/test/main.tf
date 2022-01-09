@@ -15,8 +15,8 @@ terraform {
 }
 module "resource_group" {
   source               = "../../../modules/resource_group"
-  resource_group       = "tstate"
-  location             = "eastus2"
+  resource_group       = "${var.resource_group}"
+  location             = "${var.location}"
 }
 module "network" {
   source               = "../../modules/network"

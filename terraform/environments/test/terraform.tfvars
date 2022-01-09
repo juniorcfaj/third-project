@@ -6,7 +6,7 @@ tenant_id = "786001bc-23be-406d-ae83-ba6345fba6b0"
 
 # Resource Group/Location
 location = "eastus2"
-resource_group = "RG-Project-qa"
+resource_group = "tfstate"
 application_type = "myApplication" # This name has to be globally unique.
 
 # Network

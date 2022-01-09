@@ -11,13 +11,13 @@ terraform {
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
     access_key           = "UGUYGaB3TQ5HdoqtfirEA9NK6flOaki5g0OOdCp+1DFlNxc5h0QDchvJooCTfXcVGgegNbEMhdvouKfX2QidAw=="
-    resource_group_name = "${var.resource_group}"
+    resource_group_name  = var.resource_group
   }
 }
 module "resource_group" {
   source               = "../../modules/resource_group"
-  resource_group       = "${var.resource_group}"
-  location             = "${var.location}"
+  resource_group       = var.resource_group
+  location             = var.location
 }
 module "network" {
   source               = "../../modules/network"

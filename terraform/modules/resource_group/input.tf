@@ -1,3 +1,7 @@
 # Resource Group
-variable location {}
-variable "resource_group" {}
+variable location {
+    default = "eastus2"
+}
+variable "resource_group" {
+    default = "tstate"
+}

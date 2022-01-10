@@ -1,8 +1,8 @@
 provider "azurerm" {
-  subscription_id = "${var.subscription_id}"
-  client_id = "${var.client_id}"
-  client_secret = "${var.client_secret}"
-  tenant_id = "${var.tenant_id}"
+  subscription_id = var.subscription_id
+  client_id = var.client_id
+  client_secret = var.client_secret
+  tenant_id = var.tenant_id
   features {}
 }
 terraform {
@@ -11,7 +11,7 @@ terraform {
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
     access_key           = "UGUYGaB3TQ5HdoqtfirEA9NK6flOaki5g0OOdCp+1DFlNxc5h0QDchvJooCTfXcVGgegNbEMhdvouKfX2QidAw=="
-    resource_group_name  =  var.resource_group
+    resource_group_name  = var.resource_group
   }
 }
 module "resource_group" {

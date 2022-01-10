@@ -41,7 +41,7 @@ stages:
     - task: TerraformInstaller@0
       displayName: Install Terraform
       inputs:
-        terraformVersion: '1.0.11'
+        terraformVersion: '0.14.8'
 
     - task: TerraformTaskV1@0
       displayName: Terraform Init
@@ -133,7 +133,7 @@ stages:
             displayName: Deploy Azure WebApp
             inputs:
               azureSubscription: 'azurerm-sc'
-              appName: 'lingchenzhu-webapi-AppService'
+              appName: 'junior-araujo-appservice'
               appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/fakerestapi-$(Build.BuildId).zip
               deploymentMethod: zipDeploy

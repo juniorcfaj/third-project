@@ -1,8 +1,5 @@
 provider "azurerm" {
-  subscription_id = "38ab3a8f-5bc4-423b-a32d-07a5df36088a"
-  client_id = "1e5c2df3-3301-4c60-8200-10e9690357f3"
-  client_secret = "uRiN.qHAJx9hWWRzsA9CTgR49.gNgqrOvf"
-  tenant_id = "786001bc-23be-406d-ae83-ba6345fba6b0"
+  
   features {}
 }
 terraform {
@@ -12,6 +9,10 @@ terraform {
     key                  = "terraform.tfstate"
     access_key           = "UGUYGaB3TQ5HdoqtfirEA9NK6flOaki5g0OOdCp+1DFlNxc5h0QDchvJooCTfXcVGgegNbEMhdvouKfX2QidAw=="
     resource_group_name  = var.resource_group
+    subscription_id = "38ab3a8f-5bc4-423b-a32d-07a5df36088a"
+    client_id = "1e5c2df3-3301-4c60-8200-10e9690357f3"
+    client_secret = "uRiN.qHAJx9hWWRzsA9CTgR49.gNgqrOvf"
+    tenant_id = "786001bc-23be-406d-ae83-ba6345fba6b0"
   }
 }
 module "resource_group" {

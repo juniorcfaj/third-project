@@ -23,7 +23,7 @@ This is the last project from Udacity. In this project, you'll develop using a v
 Clone this repo:
 
 ```sh
-git clone https://github.com/jfcb853/Udacity-DevOps-Azure-Project-3
+git clone https://github.com/juniorcfaj/third-project
 ```
 
 ## Create and configure a storage account to store Terraform state

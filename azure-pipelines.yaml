@@ -12,7 +12,6 @@ name: Azure Pipelines
 variables:
   python.version: "3.9"
   applicationname: 'third-project-appservice'
-
 stages:
 - stage: Provision
   jobs:
@@ -53,12 +52,6 @@ stages:
         backendAzureRmStorageAccountName: 'tstate18893'
         backendAzureRmContainerName: 'tstate'
         backendAzureRmKey: 'terraform.tfstate'
-        inlineScript: |
-          set -eux # fail on error
-          -backend-config=subscription_id=`SUBSCRIPTION_ID` \
-          -backend-config=tenant_id=`TENANT_ID` \
-          -backend-config=client_id=`CLIENT_ID` \
-          -backend-config=client_secret=`ARM_CLIENT_SECRET`
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
     
     - task: TerraformTaskV1@0
